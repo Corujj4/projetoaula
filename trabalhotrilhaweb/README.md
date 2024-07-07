@@ -1,21 +1,27 @@
-# Welcome to GitHub Desktop!
+# ProjetoAulaSemestre
 
-Relatorio Trabalho de Programacao Web
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0.
 
-Objetivo : Permitir marcacoes visualizazoes, edicoes e exclusoes, de trilhas com o ambito de organizar e categorizar varias para melhor visualizacao.
+## Development server
 
-Como ele foi estruturado : Foi usado ANGULAR, compilador WEBstorm, e upado no github.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-Explicar o que cada componente faz : 
+## Code scaffolding
 
-cabecalho - um menu de localizacao e movimentacao
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-pagina_inicial - a pagina de entrada aonde explica ao usuario o intuito da aplicacao
+## Build
 
-rodape - informacoes de "assinatura"
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-visualizar_trilhas - parte central da aplicacao, onde fica a pagina, e os codigos para o CRUD completo
+## Running unit tests
 
-Dificuldades que teve : TODAS, SIM, Dificuldade para de acostumar com angular, e com o github.
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-O que pode ser melhorado : github ser trabalhado desde o primeiro dia, menos slides de explicacao, codigo so aprende fazendo.
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

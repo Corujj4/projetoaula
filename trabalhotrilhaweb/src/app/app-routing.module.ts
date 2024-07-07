@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import {PaginaInicialComponent} from "./componentes/pagina-inicial/pagina-inicial.component";
 import {VisualizarTrilhasComponent} from "./componentes/visualizar-trilhas/visualizar-trilhas.component";
 
+
 const routes: Routes = [
   { path: "", redirectTo: "pagina-inicial", pathMatch: "full" },
   { path: "pagina-inicial", component: PaginaInicialComponent },
-  { path: "visualizar-trilhas", component: VisualizarTrilhasComponent }
+  { path: "visualizar-trilhas", component: VisualizarTrilhasComponent },
+
 
 ];
 

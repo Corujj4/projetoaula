@@ -1,0 +1,60 @@
+.btn-arrendondamento{
+  border-radius: 20px;
+}
+
+/* Estilo para o container da lista de trilhas */
+.container {
+  background-color: #FFF5EE; /* Fundo laranja muito claro */
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+/* Estilo para o título da seção */
+h2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #000000; /* Tomate */
+  margin-bottom: 20px;
+}
+
+/* Estilo para o botão "Nova Trilha" */
+.btn-arrendondamento {
+  border-radius: 25px; /* Botão arredondado */
+}
+
+/* Estilo para a tabela de trilhas */
+.table {
+  margin-top: 20px;
+  background-color: #FFF; /* Fundo branco para a tabela */
+  border-radius: 8px; /* Bordas arredondadas */
+  overflow: hidden; /* Esconde bordas arredondadas */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
+.table thead {
+  background-color: #FF6347; /* Tomate */
+  color: #FFF; /* Cor do texto */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #F9F9F9; /* Cor de fundo para linhas ímpares */
+}
+
+.table-hover tbody tr:hover {
+  background-color: #FFE4B5; /* Cor de fundo ao passar o mouse */
+}
+
+/* Estilo para os botões da tabela */
+.btn {
+  padding: 0.5rem 0.75rem;
+}
+
+
+
+
+
+
+
+

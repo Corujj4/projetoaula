@@ -1,0 +1,157 @@
+<div class="container mt-4">
+  <h2>Lista de Trilhas
+    <button class="btn btn-primary btn-arrendondamento"
+            (click)="openModal();form.reset()">
+      <i class="fas fa-plus"></i>
+      Nova Trilha
+    </button>
+  </h2>
+  <table class="table table-striped table-hover">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Trilha</th>
+      <th scope="col">Data Inicio</th>
+      <th scope="col">Status</th>
+      <th>Ações <i class="fas fa-cog"></i></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let t of trilhas; let i = index">
+      <th scope="row"> {{ i + 1}}</th>
+      <td>{{ t.titulo }}</td>
+      <td>{{ t.dataInicio | date: 'dd/MM/yyyy'}}</td>
+      <td> {{ t.status }}</td>
+      <td>
+        <!--DELETAR-->
+        <button class="btn btn-danger rounded-circle" (click)="excluirTrilha(t.id)">
+          <i class="fas fa-trash-alt"></i>
+        </button>
+        <!--EDITAR-->
+        - <button class="btn btn-warning rounded-circle" (click)="carregarDadosTrilha(t)">
+        <i class="fas fa-edit"></i>
+      </button>
+        <!--VISUALIZAR -->
+        - <button type="button" class="btn btn-primary rounded-circle"
+                  data-toggle="modal" data-target="#trilhaModal" (click)="setTrilhaAtual(t)">
+        <i class="fas fa-eye"></i>
+      </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="false" class="d-flex justify-content-center">
+  <i class="fas fa-spinner fa-spin fa-3x fa-fw"></i>
+  <h3>CARREGANDO...</h3>
+</div>
+
+
+<div class="modal" tabindex="-1" id="add-trilha">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <ng-container *ngIf="form.value.id > 0; else novaTrilha">
+            Editar trilha
+          </ng-container>
+          <ng-template #novaTrilha>
+            Adicionar Trilha
+          </ng-template>
+        </h5>
+      </div>
+      <form [formGroup]="form" (ngSubmit)="submitForm()">
+        <div class="modal-body">
+          <div class="form-row">
+            <div class="mb-3 col-md-12">
+              <label class="form-label">Titulo Trilha</label>
+              <input type="text" class="form-control" formControlName="tituloTrilha">
+              <div class="text-danger" *ngIf="isCampoValido('tituloTrilha')">
+                Campo Obrigatório
+              </div>
+            </div>
+            <div class="mb-3 col-md-6">
+              <label class="form-label">Data Inicio</label>
+              <input type="datetime-local" class="form-control" formControlName="dataInicioTrilha">
+              <div class="text-danger" *ngIf="isCampoValido('dataInicioTrilha')">
+                Campo Obrigatório
+              </div>
+            </div>
+            <div class="mb-3 col-md-6">
+              <label class="form-label">Data Conclusão</label>
+              <input type="datetime-local" class="form-control" formControlName="dataConclusaoTrilha">
+              <div class="text-danger" *ngIf="isCampoValido('dataConclusaoTrilha')">
+                Campo Obrigatório
+              </div>
+            </div>
+            <div class="md-3 col">
+              <label>Status</label>
+              <select class="form-control" formControlName="statusTrilha">
+                <option value="NOVA">Nova</option>
+                <option value="EM_ANDAMENTO">Em Andamento</option>
+                <option value="CONCLUIDA">Concluída</option>
+              </select>
+              <div class="text-danger" *ngIf="isCampoValido('statusTrilha')">
+                Campo Obrigatório
+              </div>
+            </div>
+            <div class="mb-12 col-md-12">
+              <label class="form-check-label">
+                Descrição trilha
+              </label>
+              <textarea class="form-control" rows="3"
+                        formControlName="descricaoTrilha"></textarea>
+              <div class="text-danger" *ngIf="isCampoValido('descricaoTrilha')">
+                Campo Obrigatório
+              </div>
+            </div>
+            <div class="md-3 col">
+              <hr>
+              <input type="file" accept="image/*" (change)="onFileChange($event)">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-bs-dismiss="modal"
+                  (click)="closeModal()">Fechar</button>
+          <button class="btn btn-success" type="submit">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="trilhaModal" tabindex="-1" role="dialog"
+     aria-labelledby="visualizar" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="visualizar">Detalhes da Trilha</h5>
+        <button class="close" type="button" data-dismiss="modal" arial-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p> <strong>Título:</strong>  {{ trilhaVisualizar?.titulo }} </p>
+        <p> <strong>Descrição:</strong>  {{ trilhaVisualizar?.descricao }} </p>
+        <p> <strong>Status:</strong>  {{ trilhaVisualizar?.status }} </p>
+
+        <p> <strong>Data de Início:</strong>
+          {{ trilhaVisualizar?.dataInicio | date: 'dd/MM/yyyy'}} </p>
+
+        <p> <strong>Data de Conclusão:</strong>
+          {{ trilhaVisualizar?.dataConclusao | date: 'dd/MM/yyyy HH:mm:ss'}} </p>
+
+        <img [src]="trilhaVisualizar?.imagem" alt="Imagem da trilha"
+             *ngIf="trilhaVisualizar?.imagem"
+             style="max-width: 100%; max-height: 300px; height: auto;">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+

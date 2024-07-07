@@ -1,0 +1,29 @@
+/* Estilo para o fundo da página */
+
+
+/* Estilo para o título principal */
+h1 {
+  font-size: 2rem; /* Tamanho do título reduzido */
+  color: #FF6347; /* Tomate */
+}
+
+/* Estilo para o texto principal */
+.lead {
+  font-size: 1.125rem; /* Tamanho do texto reduzido */
+  color: #ffffff;
+}
+
+.text-center{
+  color: #ffffff;
+}
+
+/* Estilo para a caixa de especificações */
+.specifications-box {
+  background-color: #FFF5EE; /* Fundo laranja muito claro */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Sombra suave */
+  margin-bottom: 20px;
+}
+
+
